@@ -3,7 +3,7 @@
 $host = 'localhost';
 $username = 'root';
 $password = '';
-$dbname = 'books';
+$dbname = 'book_db';
 $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -20,7 +20,12 @@ if ($conn->connect_error) {
 // }
 // Retrieve the list of books from the database using a prepared statement
 if (isset($_GET['search'])) {
-$stmt = $conn->prepare("SELECT title, author, year FROM books WHERE title LIKE ? OR author LIKE ?");
+$stmt = $conn->prepare("SELECT `id`, `title`, 
+                                `author`, `year`, `average_rating`, 
+                                `isbn`, `isbn13`, `language_code`, 
+                                `num_pages`, `ratings_count`, 
+                                `text_reviews_count`, `publication_date`, 
+                                `publisher` FROM books WHERE title LIKE ? OR author LIKE ?");
 $search = '%' . htmlspecialchars($_GET['search']) . '%'; // Sanitize user input to prevent XSS attacks
 $stmt->bind_param("ss", $search, $search);
 $stmt->execute();
@@ -57,6 +62,15 @@ if ($result->num_rows > 0) {
           <th>Title</th>
           <th>Author</th>
           <th>Year</th>
+          <th>average_rating</th>
+          <th>isbn</th>
+          <th>isbn13</th>
+          <th>language_code</th> 
+          <th>num_pages</th>
+          <th>ratings_count</th> 
+          <th>text_reviews_count</th>
+          <th>publication_date</th> 
+          <th>publisher</th>
         </tr>
       </thead>
       <tbody>
