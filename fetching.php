@@ -24,8 +24,8 @@ $stmt = $conn->prepare("SELECT `id`, `title`,
                                 `author`, `year`, `average_rating`, 
                                 `isbn`, `isbn13`, `language_code`, 
                                 `num_pages`, `ratings_count`, 
-                                `text_reviews_count`, `publication_date`, 
-                                `publisher` FROM books WHERE title LIKE ? OR author LIKE ?");
+                                `text_reviews_count`, `publication_date` 
+                                FROM books WHERE title LIKE ? OR author LIKE ?");
 $search = '%' . htmlspecialchars($_GET['search']) . '%'; // Sanitize user input to prevent XSS attacks
 $stmt->bind_param("ss", $search, $search);
 $stmt->execute();
@@ -69,8 +69,7 @@ if ($result->num_rows > 0) {
           <th>num_pages</th>
           <th>ratings_count</th> 
           <th>text_reviews_count</th>
-          <th>publication_date</th> 
-          <th>publisher</th>
+          <th>publication_date</th>
         </tr>
       </thead>
       <tbody>
@@ -79,6 +78,14 @@ if ($result->num_rows > 0) {
             <td><?= htmlspecialchars($book['title']) ?></td> <!-- Sanitize output to prevent XSS attacks -->
             <td><?= htmlspecialchars($book['author']) ?></td>
             <td><?= $book['year'] ?></td>
+            <td><?= htmlspecialchars($book['average_rating']) ?></td>
+            <td><?= htmlspecialchars($book['isbn']) ?></td>
+            <td><?= htmlspecialchars($book['isbn13']) ?></td>
+            <td><?= htmlspecialchars($book['language_code']) ?></td> 
+            <td><?= $book['num_pages'] ?></td>
+            <td><?= $book['ratings_count'] ?></td> 
+            <td><?= htmlspecialchars($book['text_reviews_count']) ?></td>
+            <td><?= $book['publication_date'] ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
