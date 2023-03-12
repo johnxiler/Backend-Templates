@@ -87,10 +87,10 @@ if (isset($_GET['search'])) {
         <th>average_rating</th>
         <th>isbn</th>
         <th>isbn13</th>
-        <th>language_code</th>
+        <th>language</th>
         <th>num_pages</th>
-        <th>ratings_count</th>
-        <th>text_reviews_count</th>
+        <th>ratings</th>
+        <th>reviews</th>
         <th>publication_date</th>
       </tr>
     </thead>

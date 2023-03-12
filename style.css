@@ -1,0 +1,10 @@
+body {
+    width: fit-content;
+    color: aqua;
+}
+
+#book-list {
+    grid-column: initial;
+    grid-row: inherit;
+    color: red;
+}
