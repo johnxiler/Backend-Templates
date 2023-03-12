@@ -30,7 +30,7 @@ if (isset($_GET['search'])) {
   $stmt->bind_param("ss", $search, $search);
   $stmt->execute();
   $result = $stmt->get_result();
-  $books = array();
+  // $books = array();
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
       $books[] = $row;
