@@ -1,0 +1,104 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<style>
+    .table-container {
+        overflow-x: auto;
+        overflow-y: auto;
+      }
+    table {
+      border-collapse: collapse;
+      width: 65%;
+      margin-left:12rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+      
+    }
+    th {
+      background-color: #4CAF50;
+    }
+    tr:nth-child(even) {
+      background-color: #4CAF50;
+    }
+    @media screen and (max-width: 12rem) {
+        table {  
+          width: 25%;
+            margin-left:4rem;
+          }
+       
+      th, td {
+        display: inline-block;
+      }
+      th {
+        text-align: center;
+        background-color: #4CAF50;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px;
+      }
+      td {
+        border-bottom: 1px solid #ddd;
+      }
+      td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+  </style>
+  <a style="color:#fff;" href="{% url 'survey_rating_create' %}">Add new survey rating</a>
+  <hr>
+  <center><h1>KSU FACULTY EVALUATION SYSTEM</h1>
+  </center>
+  
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Course Objectives</th>
+          <th>Delivering Material</th>
+          <th>Engaging Students</th>
+          <th>Responding Questions</th>
+          <th>Providing Feedback</th>
+          <th>Inclusive Environment</th>
+          <th>Using Technology</th>
+          <th>Promoting Critical Thinking</th>
+          <th>Challenging Students</th>
+          <th>Overall Satisfaction</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for survey_rating in survey_ratings %}
+          <tr>
+            <td>{{ survey_rating.course_objectives }}</td>
+            <td>{{ survey_rating.delivering_material }}</td>
+            <td>{{ survey_rating.engaging_students }}</td>
+            <td>{{ survey_rating.responding_questions }}</td>
+            <td>{{ survey_rating.providing_feedback }}</td>
+            <td>{{ survey_rating.inclusive_environment }}</td>
+            <td>{{ survey_rating.using_technology }}</td>
+            <td>{{ survey_rating.promoting_critical_thinking }}</td>
+            <td>{{ survey_rating.challenging_students }}</td>
+            <td>{{ survey_rating.overall_satisfaction }}</td>
+            <td>
+              <a href="{% url 'survey_rating_update' survey_rating.pk %}">Edit</a>
+              <form method="post" action="{% url 'survey_rating_delete' survey_rating.pk %}">
+                {% csrf_token %}
+                <input type="submit" value="Delete">
+              </form>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="12">No survey ratings yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+  </div>
+{% endblock %}

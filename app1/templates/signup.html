@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    {% block title %}SignupPage{% endblock %}
+ 
+    {% comment %} <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> {% endcomment %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/signuppage.css'%}">
+    <!--Stylesheet-->
+</head>
+<body class="body" style="background-color:rgba(6, 124, 139, 0.808);">
+    {% comment %} <div class="background">
+        <img id='iamg' src="{% static 'images/ksuniversity.png' %}" alt="ksupic">
+    </div> {% endcomment %}
+    <form class="forms" action="" method="post">
+        {% csrf_token %} 
+        <h3>Signup Here</h3>
+
+        <label for="username">Username</label>
+        <input type="text" placeholder="Username" name="username" id="username">
+
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email or Phone" name="email" id="email">
+
+        <label for="password1">Password</label>
+        <input type="password" placeholder="Password" id="password1" name="password1">
+
+        <label for="password2">Confirm Password</label>
+        <input type="password" placeholder="Confirm Password" id="password2" name="password2">
+        <button type="submit">Signup</button>
+        <a href="{% url 'login' %}" >I have already an account</a>
+   
+    </form>
+
+</body>
+</html>

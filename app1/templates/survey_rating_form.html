@@ -1,0 +1,153 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div>
+   <a href="{% url 'survey_rating_list' %}" style="background-color:#ffff;">Survey rating list</a>
+</div>
+<hr>
+<div class="container">
+   
+    <h3>KSU faculty evaluation survey</h3>
+    <h4>When rating these questions, you could use a scale of 1-5, with 1 being the lowest rating and 5 being the highest rating.</h4>
+    {% comment %} <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <input type="submit" value="Submit">
+      
+  </form> {% endcomment %}
+    {% comment %} <form method="post">
+     {% csrf_token %}
+     <p>1. How well did the faculty member communicate the course objectives and expectations at the beginning of the course?</p>
+     <div class="rating-container">
+      {{form.course_objectives}}
+     <hr>
+     <p>2. How effective was the faculty member in delivering the course material and explaining complex concepts?</p>
+     <div class="rating-container">
+        {{form.delivering_material}}
+     <hr>
+     <p>3.How well did the faculty member engage with the students during the course?</p>
+     <div class="rating-container">
+        {{form.engaging_students}}
+     <p>4.Did the faculty member respond to student questions and concerns in a timely manner?</p>
+     <div class="rating-container">
+        {{form.responding_questions}}
+     <hr>
+     <p>5.Did the faculty member provide helpful feedback on assignments and exams in a timely manner?</p>
+     <div class="rating-container">
+        {{form.providing_feedback}}
+     <hr>
+     <p>6.Did the faculty member create a welcoming and inclusive classroom environment?</p>
+     <div class="rating-container">
+        {{form.inclusive_environment}}
+     <hr>
+     <p>7. Did the faculty member effectively use technology in the course?</p>
+     <div class="rating-container">
+        {{form.using_technology}}
+     <hr>
+     <p>8. Did the faculty member promote critical thinking and intellectual curiosity among students?</p>
+     <div class="rating-container">
+        {{form.promoting_critical_thinking}}
+     <hr>
+     <p>9. Did the faculty member effectively challenge and motivate students to learn?</p>
+     <div class="rating-container">
+        {{form.challenging_students}}
+     <hr>
+     <!-- Repeat for each question -->
+     <p>10. Overall, how satisfied were you with the faculty member's performance in the course?</p>
+     <div class="rating-container">
+        {{form.overall_satisfaction}}
+     <hr>
+     
+     <input class="btn" type="submit" name='Submit'>
+     <hr>
+    </form> {% endcomment %}
+
+    <form method="post">
+      {% csrf_token %}
+      <p>1. How well did the faculty member communicate the course objectives and expectations at the beginning of the course?</p>
+     <div class="rating-container">
+      <input type="radio" name="choice" value="1">1
+      <input type="radio" name="choice" value="2">2
+      <input type="radio" name="choice" value="3">3
+      <input type="radio" name="choice" value="4">4
+      <input type="radio" name="choice" value="5">5
+     </div>
+     <p>2. How effective was the faculty member in delivering the course material and explaining complex concepts?</p>
+     <div class="rating-container">
+      <input type="radio" name="choice" value="1">1
+      <input type="radio" name="choice" value="2">2
+      <input type="radio" name="choice" value="3">3
+      <input type="radio" name="choice" value="4">4
+      <input type="radio" name="choice" value="5">5
+     </div>
+     <p>3.How well did the faculty member engage with the students during the course?</p>
+     <div class="rating-container">
+      <input type="radio" name="choice" value="1">1
+      <input type="radio" name="choice" value="2">2
+      <input type="radio" name="choice" value="3">3
+      <input type="radio" name="choice" value="4">4
+      <input type="radio" name="choice" value="5">5
+     </div>
+     <p>4.Did the faculty member respond to student questions and concerns in a timely manner?</p>
+     <div class="rating-container">
+      <input type="radio" name="choice" value="1">1
+      <input type="radio" name="choice" value="2">2
+      <input type="radio" name="choice" value="3">3
+      <input type="radio" name="choice" value="4">4
+      <input type="radio" name="choice" value="5">5
+     </div>
+     <p>5.Did the faculty member provide helpful feedback on assignments and exams in a timely manner?</p>
+     <div class="rating-container">
+      <input type="radio" name="choice" value="1">1
+      <input type="radio" name="choice" value="2">2
+      <input type="radio" name="choice" value="3">3
+      <input type="radio" name="choice" value="4">4
+      <input type="radio" name="choice" value="5">5
+     </div>
+     <p>6.Did the faculty member create a welcoming and inclusive classroom environment?</p>
+     <div class="rating-container">
+      <input type="radio" name="choice" value="1">1
+      <input type="radio" name="choice" value="2">2
+      <input type="radio" name="choice" value="3">3
+      <input type="radio" name="choice" value="4">4
+      <input type="radio" name="choice" value="5">5
+     </div>
+     <p>7. Did the faculty member effectively use technology in the course?</p>
+     <div class="rating-container">
+      <input type="radio" name="choice" value="1">1
+      <input type="radio" name="choice" value="2">2
+      <input type="radio" name="choice" value="3">3
+      <input type="radio" name="choice" value="4">4
+      <input type="radio" name="choice" value="5">5
+     </div>
+     <p>8. Did the faculty member promote critical thinking and intellectual curiosity among students?</p>
+     <div class="rating-container">
+      <input type="radio" name="choice" value="1">1
+      <input type="radio" name="choice" value="2">2
+      <input type="radio" name="choice" value="3">3
+      <input type="radio" name="choice" value="4">4
+      <input type="radio" name="choice" value="5">5
+     </div>
+     <p>9. Did the faculty member effectively challenge and motivate students to learn?</p>
+     <div class="rating-container">
+      <input type="radio" name="choice" value="1">1
+      <input type="radio" name="choice" value="2">2
+      <input type="radio" name="choice" value="3">3
+      <input type="radio" name="choice" value="4">4
+      <input type="radio" name="choice" value="5">5
+     </div>
+     <p>10. Overall, how satisfied were you with the faculty member's performance in the course?</p>
+     <div class="rating-container">
+      <input type="radio" name="choice" value="1">1
+      <input type="radio" name="choice" value="2">2
+      <input type="radio" name="choice" value="3">3
+      <input type="radio" name="choice" value="4">4
+      <input type="radio" name="choice" value="5">5
+     </div>
+
+    
+      <input type="submit" value="Submit">
+    </form>
+
+    {% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="container">
+   
+    <h3>KSU faculty evaluation survey</h3>
+    <h4>When rating these questions, you could use a scale of 1-5, with 1 being the lowest rating and 5 being the highest rating.</h4>
+  <h1>Course Evaluation</h1>
+  <form method="post">
+    {% csrf_token %}
+    <div class= 'rating-container'>
+        <label for="id_faculty_member">Faculty member:</label>
+        {{form.faculty_member}}
+    </div>
+    <div class= 'rating-container'>
+        <label for="id_course_title">Course title:</label>
+        {{form.course_title}}
+    </div>
+    <div class= 'rating-container'>
+        <label for="id_semester">Semester:</label>
+        {{form.semester}}
+    </div>
+    <div class= 'rating-container'>
+        <label for="id_year">Year:</label>
+        {{form.year}}
+    </div>
+    <p>1. How well did the faculty member communicate the course objectives and expectations at the beginning of the course?</p>
+     <div>
+    {{form.communication}}
+     </div>
+     <p>2. How effective was the faculty member in delivering the course material and explaining complex concepts?</p>
+     <div>
+        {{form.delivery}}
+     </div>
+     <p>3.How well did the faculty member engage with the students during the course?</p>
+     <div>
+        {{form.engagement}}
+     </div>
+     <p>4.Did the faculty member respond to student questions and concerns in a timely manner?</p>
+     <div>
+        {{form.responsiveness}}
+     </div>
+     <p>5.Did the faculty member provide helpful feedback on assignments and exams in a timely manner?</p>
+     <div>
+        {{form.feedback}}
+     </div>
+     <p>6.Did the faculty member create a welcoming and inclusive classroom environment?</p>
+     <div>
+        {{form.inclusiveness}}
+     </div>
+     <p>7. Did the faculty member effectively use technology in the course?</p>
+     <div>
+        {{form.technology}}
+     </div>
+     <p>8. Did the faculty member promote critical thinking and intellectual curiosity among students?</p>
+     <div>
+        {{form.critical_thinking}}
+     </div>
+     <p>9. Did the faculty member effectively challenge and motivate students to learn?</p>
+     <div>
+        {{form.motivation}}
+     </div>
+     <p>10. Overall, how satisfied were you with the faculty member's performance in the course?</p>
+     <div>
+        {{form.satisfaction}}
+     </div>
+     <div class= 'rating-container'>
+        <p><label for="id_comments">Comments:</label></p>
+        {{form.comments}}
+     </div>
+    <button style="color:white; border-radius:10%; background-color: black;" type="submit">Submit</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+<div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Faculty</th>
+          <th>course title</th>
+          <th>semester</th>
+          <th>year</th>
+          <th>Course Objectives</th>
+          <th>Delivering Material</th>
+          <th>Engaging Students</th>
+          <th>Responding Questions</th>
+          <th>Providing Feedback</th>
+          <th>Inclusive Environment</th>
+          <th>Using Technology</th>
+          <th>Promoting Critical Thinking</th>
+          <th>Challenging Students</th>
+          <th>Satisfaction</th>
+          <th>Actions</th>
+          <th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for evaluation in evaluations %}
+          <tr>
+            <td>{{ evaluation.faculty_member }}</td>
+            <td>{{ evaluation.course_title }}</td>
+            <td>{{ evaluation.semester }}</td>
+            <td>{{ evaluation.year }}</td>
+            <td>{{ evaluation.communication }}</td>
+            <td>{{ evaluation.delivery }}</td>
+            <td>{{ evaluation.engagement }}</td>
+            <td>{{ evaluation.responsiveness }}</td>
+            <td>{{ evaluation.feedback }}</td>
+            <td>{{ evaluation.inclusiveness }}</td>
+            <td>{{ evaluation.technology }}</td>
+            <td>{{ evaluation.critical_thinking }}</td>
+            <td>{{ evaluation.motivation }}</td>
+            <td>{{ evaluation.satisfaction }}</td>
+            <td>{{ evaluation.comments }}</td>
+            <td>
+              <a href="{% url 'edit_evaluation' evaluation.pk %}">Edit</a>
+              <form method="post" action="{% url 'delete_evaluation' evaluation.pk %}">
+                {% csrf_token %}
+                <input type="submit" value="Delete">
+              </form>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="12">No survey ratings yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+  </div>
