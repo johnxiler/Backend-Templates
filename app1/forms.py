@@ -1,15 +1,15 @@
 from .models import CourseEvaluation
 from django import forms
-from .models import SurveyRating
+# from .models import SurveyRating
 
 
-class SurveyRatingForm(forms.ModelForm):
-    class Meta:
-        model = SurveyRating
-        fields = ['course_objectives', 'delivering_material', 'engaging_students',
-                  'responding_questions', 'providing_feedback', 'inclusive_environment',
-                  'using_technology', 'promoting_critical_thinking', 'challenging_students',
-                  'overall_satisfaction']
+# class SurveyRatingForm(forms.ModelForm):
+#     class Meta:
+#         model = SurveyRating
+#         fields = ['course_objectives', 'delivering_material', 'engaging_students',
+#                   'responding_questions', 'providing_feedback', 'inclusive_environment',
+#                   'using_technology', 'promoting_critical_thinking', 'challenging_students',
+#                   'overall_satisfaction']
 
 
 class CourseEvaluationForm(forms.ModelForm):
@@ -76,5 +76,5 @@ class CourseEvaluationForm(forms.ModelForm):
 
     class Meta:
         model = CourseEvaluation
-        fields = ['faculty_member', 'course_title', 'semester', 'year', 'communication', 'delivery', 'engagement', 'responsiveness',
+        fields = ['faculty_member', 'course_title', 'semester', 'year', 'evaluator', 'communication', 'delivery', 'engagement', 'responsiveness',
                   'feedback', 'inclusiveness', 'technology', 'critical_thinking', 'motivation', 'satisfaction', 'comments']

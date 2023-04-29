@@ -2,10 +2,14 @@
 
 {% block content %}
 <div class="container">
-   
+    <div>
+        <a href="{% url 'evaluation_list' %}" style="color:#fff;" >Survey rating list</a>
+     </div>
+     <hr>
     <h3>KSU faculty evaluation survey</h3>
-    <h4>When rating these questions, you could use a scale of 1-5, with 1 being the lowest rating and 5 being the highest rating.</h4>
+    <h4>When rating these questions, you could use a scale from poor to excellent, with poor being the lowest rating and excellent being the highest rating.</h4>
   <h1>Course Evaluation</h1>
+  <hr>
   <form method="post">
     {% csrf_token %}
     <div class= 'rating-container'>
@@ -24,6 +28,12 @@
         <label for="id_year">Year:</label>
         {{form.year}}
     </div>
+    <br>
+    <div class= 'rating-container'>
+        <label for="id_evaluator">Evaluator:</label>
+        {{form.evaluator}}
+    </div>
+    <br>
     <p>1. How well did the faculty member communicate the course objectives and expectations at the beginning of the course?</p>
      <div>
     {{form.communication}}

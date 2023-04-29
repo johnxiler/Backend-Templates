@@ -1,3 +1,8 @@
+{% extends 'home.html' %}
+{%block content %}
+
+<a style="color:#fff;" href="{% url 'evaluation' %}">Add new faculty rating</a>
+  <hr>
 <div class="table-container">
     <table>
       <thead>
@@ -6,6 +11,7 @@
           <th>course title</th>
           <th>semester</th>
           <th>year</th>
+          <th>Evaluator</th>
           <th>Course Objectives</th>
           <th>Delivering Material</th>
           <th>Engaging Students</th>
@@ -27,6 +33,7 @@
             <td>{{ evaluation.course_title }}</td>
             <td>{{ evaluation.semester }}</td>
             <td>{{ evaluation.year }}</td>
+            <td>{{ evaluation.evaluator }}</td>
             <td>{{ evaluation.communication }}</td>
             <td>{{ evaluation.delivery }}</td>
             <td>{{ evaluation.engagement }}</td>
@@ -48,10 +55,11 @@
           </tr>
         {% empty %}
           <tr>
-            <td colspan="12">No survey ratings yet.</td>
+            <td colspan="21">No survey ratings yet.</td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
     
   </div>
+{% endblock %}

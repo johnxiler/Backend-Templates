@@ -17,7 +17,12 @@
     <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
     <hr>
     <div>
+    {% if user.is_authenticated %}
+    Welcome, {{ request.user.username }}!
+    {% endif %}
+    <br>
   {% block content %}
+
 
    {% endblock %}
   </div>

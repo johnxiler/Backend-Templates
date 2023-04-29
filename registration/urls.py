@@ -16,21 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app1 import views
-from app1.views import SurveyRatingListView, SurveyRatingCreateView, SurveyRatingUpdateView, SurveyRatingDeleteView
+# from app1.views import SurveyRatingListView, SurveyRatingCreateView, SurveyRatingUpdateView, SurveyRatingDeleteView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.SignupPage, name='signup'),
     path('login/', views.LoginPage, name='login'),
     path('home/', views.HomePage, name='home'),
     path('logout/', views.LogoutPage, name='logout'),
-    path('survey-rating/list/', SurveyRatingListView.as_view(),
-         name='survey_rating_list'),
-    path('survey-rating/create/', SurveyRatingCreateView.as_view(),
-         name='survey_rating_create'),
-    path('survey-rating/<int:pk>/update/',
-         SurveyRatingUpdateView.as_view(), name='survey_rating_update'),
-    path('survey-rating/<int:pk>/delete/',
-         SurveyRatingDeleteView.as_view(), name='survey_rating_delete'),
     path('evaluation/', views.evaluation, name='evaluation'),
     path('evaluation/<int:pk>/edit/',
          views.edit_evaluation, name='edit_evaluation'),
@@ -39,3 +31,11 @@ urlpatterns = [
     path('evaluation_list/',
          views.evaluation_list, name='evaluation_list'),
 ]
+#     path('survey-rating/list/', SurveyRatingListView.as_view(),
+#          name='survey_rating_list'),
+#     path('survey-rating/create/', SurveyRatingCreateView.as_view(),
+#          name='survey_rating_create'),
+#     path('survey-rating/<int:pk>/update/',
+#          SurveyRatingUpdateView.as_view(), name='survey_rating_update'),
+#     path('survey-rating/<int:pk>/delete/',
+#          SurveyRatingDeleteView.as_view(), name='survey_rating_delete'),

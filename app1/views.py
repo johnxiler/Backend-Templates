@@ -2,13 +2,13 @@ from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .models import CourseEvaluation
 from .forms import CourseEvaluationForm
 from django.shortcuts import render
-from .forms import SurveyRatingForm
+# from .forms import SurveyRatingForm
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+# from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from .models import SurveyRating
+# from .models import SurveyRating
 
 
 @login_required(login_url='login')
@@ -42,11 +42,11 @@ def LoginPage(request):
         user = authenticate(request, username=username, password=pass1)
         if user is not None:
             login(request, user)
-            return redirect('survey_rating_list')
+            return redirect('evaluation_list')
         else:
             return HttpResponse("Username or Password is incorrect!!!")
 
-    return render(request, 'login.html')
+    return render(request, 'login.html', {'user': request.user})
 
 
 def LogoutPage(request):
@@ -54,42 +54,42 @@ def LogoutPage(request):
     return redirect('login')
 
 
-class SurveyRatingListView(ListView):
-    model = SurveyRating
-    template_name = 'survey_rating_list.html'
-    context_object_name = 'survey_ratings'
+# class SurveyRatingListView(ListView):
+#     model = SurveyRating
+#     template_name = 'survey_rating_list.html'
+#     context_object_name = 'survey_ratings'
 
 
-class SurveyRatingCreateView(CreateView):
-    model = SurveyRating
-    fields = ['course_objectives', 'delivering_material', 'engaging_students', 'responding_questions', 'providing_feedback',
-              'inclusive_environment', 'using_technology', 'promoting_critical_thinking', 'challenging_students', 'overall_satisfaction']
-    template_name = 'survey_rating_form.html'
-    success_url = reverse_lazy('survey_rating_list')
+# class SurveyRatingCreateView(CreateView):
+#     model = SurveyRating
+#     fields = ['course_objectives', 'delivering_material', 'engaging_students', 'responding_questions', 'providing_feedback',
+#               'inclusive_environment', 'using_technology', 'promoting_critical_thinking', 'challenging_students', 'overall_satisfaction']
+#     template_name = 'survey_rating_form.html'
+#     success_url = reverse_lazy('survey_rating_list')
 
 
-class SurveyRatingUpdateView(UpdateView):
-    model = SurveyRating
-    fields = ['course_objectives', 'delivering_material', 'engaging_students', 'responding_questions', 'providing_feedback',
-              'inclusive_environment', 'using_technology', 'promoting_critical_thinking', 'challenging_students', 'overall_satisfaction']
-    template_name = 'survey_rating_form.html'
-    success_url = reverse_lazy('survey_rating_list')
+# class SurveyRatingUpdateView(UpdateView):
+#     model = SurveyRating
+#     fields = ['course_objectives', 'delivering_material', 'engaging_students', 'responding_questions', 'providing_feedback',
+#               'inclusive_environment', 'using_technology', 'promoting_critical_thinking', 'challenging_students', 'overall_satisfaction']
+#     template_name = 'survey_rating_form.html'
+#     success_url = reverse_lazy('survey_rating_list')
 
 
-class SurveyRatingDeleteView(DeleteView):
-    model = SurveyRating
-    template_name = 'survey_rating_confirm_delete.html'
-    success_url = reverse_lazy('survey_rating_list')
+# class SurveyRatingDeleteView(DeleteView):
+#     model = SurveyRating
+#     template_name = 'survey_rating_confirm_delete.html'
+#     success_url = reverse_lazy('survey_rating_list')
 
 
-def survey_rating(request):
-    if request.method == 'POST':
-        form = SurveyRatingForm(request.POST)
-        if form.is_valid():
-            form.save()
-    else:
-        form = SurveyRatingForm()
-    return render(request, 'survey_rating.html', {'form': form})
+# def survey_rating(request):
+#     if request.method == 'POST':
+#         form = SurveyRatingForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#     else:
+#         form = SurveyRatingForm()
+#     return render(request, 'survey_rating.html', {'form': form})
 
 
 def evaluation(request):
