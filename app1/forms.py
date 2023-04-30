@@ -14,63 +14,63 @@ from django import forms
 
 class CourseEvaluationForm(forms.ModelForm):
     communication = forms.TypedChoiceField(
-        choices=[(1, 'Poor'), (2, 'Fair'), (3, 'Good'),
-                 (4, 'Very good'), (5, 'Excellent')],
-        widget=forms.RadioSelect,
+        choices=[(1, '1'), (2, '2'), (3, '3'),
+                 (4, '4'), (5, '5')],
+        widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
         coerce=int
     )
     delivery = forms.TypedChoiceField(
-        choices=[(1, 'Poor'), (2, 'Fair'), (3, 'Good'),
-                 (4, 'Very good'), (5, 'Excellent')],
-        widget=forms.RadioSelect,
+        choices=[(1, '1'), (2, '2'), (3, '3'),
+                 (4, '4'), (5, '5')],
+        widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
         coerce=int
     )
     engagement = forms.TypedChoiceField(
-        choices=[(1, 'Poor'), (2, 'Fair'), (3, 'Good'),
-                 (4, 'Very good'), (5, 'Excellent')],
-        widget=forms.RadioSelect,
+        choices=[(1, '1'), (2, '2'), (3, '3'),
+                 (4, '4'), (5, '5')],
+        widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
         coerce=int
     )
     responsiveness = forms.TypedChoiceField(
-        choices=[(1, 'Poor'), (2, 'Fair'), (3, 'Good'),
-                 (4, 'Very good'), (5, 'Excellent')],
-        widget=forms.RadioSelect,
+        choices=[(1, '1'), (2, '2'), (3, '3'),
+                 (4, '4'), (5, '5')],
+        widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
         coerce=int
     )
     feedback = forms.TypedChoiceField(
-        choices=[(1, 'Poor'), (2, 'Fair'), (3, 'Good'),
-                 (4, 'Very good'), (5, 'Excellent')],
-        widget=forms.RadioSelect,
+        choices=[(1, '1'), (2, '2'), (3, '3'),
+                 (4, '4'), (5, '5')],
+        widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
         coerce=int
     )
     inclusiveness = forms.TypedChoiceField(
-        choices=[(1, 'Poor'), (2, 'Fair'), (3, 'Good'),
-                 (4, 'Very good'), (5, 'Excellent')],
-        widget=forms.RadioSelect,
+        choices=[(1, '1'), (2, '2'), (3, '3'),
+                 (4, '4'), (5, '5')],
+        widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
         coerce=int
     )
     technology = forms.TypedChoiceField(
-        choices=[(1, 'Poor'), (2, 'Fair'), (3, 'Good'),
-                 (4, 'Very good'), (5, 'Excellent')],
-        widget=forms.RadioSelect,
+        choices=[(1, '1'), (2, '2'), (3, '3'),
+                 (4, '4'), (5, '5')],
+        widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
         coerce=int
     )
     critical_thinking = forms.TypedChoiceField(
-        choices=[(1, 'Poor'), (2, 'Fair'), (3, 'Good'),
-                 (4, 'Very good'), (5, 'Excellent')],
-        widget=forms.RadioSelect,
+        choices=[(1, '1'), (2, '2'), (3, '3'),
+                 (4, '4'), (5, '5')],
+        widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
         coerce=int
     )
     motivation = forms.TypedChoiceField(
-        choices=[(1, 'Poor'), (2, 'Fair'), (3, 'Good'),
-                 (4, 'Very good'), (5, 'Excellent')],
-        widget=forms.RadioSelect,
+        choices=[(1, '1'), (2, '2'), (3, '3'),
+                 (4, '4'), (5, '5')],
+        widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
         coerce=int
     )
     satisfaction = forms.TypedChoiceField(
-        choices=[(1, 'Poor'), (2, 'Fair'), (3, 'Good'),
-                 (4, 'Very good'), (5, 'Excellent')],
-        widget=forms.RadioSelect,
+        choices=[(1, '1'), (2, '2'), (3, '3'),
+                 (4, '4'), (5, '5')],
+        widget=forms.RadioSelect(attrs={'class': 'radio-inline'}),
         coerce=int
     )
 

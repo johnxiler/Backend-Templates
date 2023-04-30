@@ -14,14 +14,17 @@
     <link rel="stylesheet" href="{% static 'css/survey.css' %}">
   </head>
   <body>
+    <div>
+      <br>
+      {% if user.is_authenticated %}
+      Welcome, {{ request.user.username }}!
+      {% endif %}
+      <br>
+      </div>
+      <br>
     <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
     <hr>
-    <div>
-    {% if user.is_authenticated %}
-    Welcome, {{ request.user.username }}!
-    {% endif %}
-    <br>
-    <br>
+    
   {% block content %}
 
 

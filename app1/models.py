@@ -35,7 +35,11 @@ class CourseEvaluation(models.Model):
     critical_thinking = models.IntegerField()
     motivation = models.IntegerField()
     satisfaction = models.IntegerField()
-    comments = models.TextField(blank=True)
+    comments = models.CharField(max_length=200)
+
+    @property
+    def total_average(self):
+        return sum([self.communication, self.delivery, self.engagement, self.responsiveness, self.feedback, self.inclusiveness, self.technology, self.critical_thinking, self.motivation, self.satisfaction]) / 10
 
     def __str__(self):
         return f"{self.course_title} - {self.faculty_member} ({self.semester} {self.year})"

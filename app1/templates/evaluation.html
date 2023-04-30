@@ -1,14 +1,21 @@
 {% extends 'home.html' %}
-
+<style>
+   .radio-inline input[type="radio"] {
+      margin-top: -1px;
+      vertical-align: middle;
+      grid-column: 1 / span 2;
+  }
+</style>
+{% load static %}
 {% block content %}
 <div class="container">
     <div>
-        <a href="{% url 'evaluation_list' %}" style="color:#fff;" >Survey rating list</a>
+        <h3><a href="{% url 'evaluation_list' %}" style="color:#fff;" >Survey rating list</a></h3>
      </div>
-     <img src="images/ksuniversity.png" alt="" srcset="">
+     
      <hr>
-    <h3>KSU faculty evaluation survey</h3>
-    <h4>When rating these questions, you could use a scale from poor to excellent, with poor being the lowest rating and excellent being the highest rating.</h4>
+     <img src="{% static 'images/ksuniversity.png' %}" alt="lol" style="width: 125px;">
+    <h3>KSU Faculty Evaluation Survey</h3>
   <hr>
   <form method="post">
     {% csrf_token %}
@@ -24,56 +31,91 @@
         <label for="id_semester">Semester:</label>
         {{form.semester}}
     </div>
+    <hr>
     <div class= 'rating-container'>
         <label for="id_year">Year:</label>
         {{form.year}}
     </div>
     <br>
+    <h5>When rating these questions, you could use a scale from 1-5, with 1 being the lowest rating and 5 being the highest rating.</h5>
     <div class= 'rating-container'>
         <label for="id_evaluator">Evaluator:</label>
         {{form.evaluator}}
     </div>
+    <hr>
     <br>
     <p>1. How well did the faculty member communicate the course objectives and expectations at the beginning of the course?</p>
      <div>
-    {{form.communication}}
+      {% for radio in form.communication %}
+            {{ radio }}
+          {% endfor %}
+    {% comment %} {{form.communication}} {% endcomment %}
      </div>
      <p>2. How effective was the faculty member in delivering the course material and explaining complex concepts?</p>
      <div>
-        {{form.delivery}}
+      {% for radio in form.delivery %}
+            {{ radio }}
+          {% endfor %}
+        {% comment %} {{form.delivery}} {% endcomment %}
      </div>
      <p>3.How well did the faculty member engage with the students during the course?</p>
      <div>
-        {{form.engagement}}
+      {% for radio in form.engagement %}
+            {{ radio }}
+          {% endfor %}
+        {% comment %} {{form.engagement}} {% endcomment %}
      </div>
      <p>4.Did the faculty member respond to student questions and concerns in a timely manner?</p>
      <div>
-        {{form.responsiveness}}
+      {% for radio in form.responsiveness %}
+            {{ radio }}
+          {% endfor %}
+        {% comment %} {{form.responsiveness}} {% endcomment %}
      </div>
      <p>5.Did the faculty member provide helpful feedback on assignments and exams in a timely manner?</p>
      <div>
-        {{form.feedback}}
+      {% for radio in form.feedback %}
+            {{ radio }}
+          {% endfor %}
+        {% comment %} {{form.feedback}} {% endcomment %}
      </div>
      <p>6.Did the faculty member create a welcoming and inclusive classroom environment?</p>
      <div>
-        {{form.inclusiveness}}
+      {% for radio in form.inclusiveness %}
+            {{ radio }}
+          {% endfor %}
+        {% comment %} {{form.inclusiveness}} {% endcomment %}
      </div>
      <p>7. Did the faculty member effectively use technology in the course?</p>
      <div>
-        {{form.technology}}
+      {% for radio in form.technology %}
+            {{ radio }}
+          {% endfor %}
+        {% comment %} {{form.technology}} {% endcomment %}
      </div>
      <p>8. Did the faculty member promote critical thinking and intellectual curiosity among students?</p>
      <div>
-        {{form.critical_thinking}}
+      {% for radio in form.critical_thinking %}
+            {{ radio }}
+          {% endfor %}
+        {% comment %} {{form.critical_thinking}} {% endcomment %}
      </div>
      <p>9. Did the faculty member effectively challenge and motivate students to learn?</p>
      <div>
-        {{form.motivation}}
+      {% for radio in form.motivation %}
+            {{ radio }}
+          {% endfor %}
+        {% comment %} {{form.motivation}} {% endcomment %}
      </div>
      <p>10. Overall, how satisfied were you with the faculty member's performance in the course?</p>
      <div>
-        {{form.satisfaction}}
+      {% for radio in form.satisfaction %}
+            {{ radio }}
+          {% endfor %} {% comment %} note: this for loop displays radio button horizontally {% comment %}
+        {% comment %} {{form.satisfaction}} {% endcomment %}
      </div>
+     <hr>
+     &nbsp
      <div class= 'rating-container'>
         <p><label for="id_comments">Comments:</label></p>
         {{form.comments}}

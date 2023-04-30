@@ -1,16 +1,111 @@
 {% extends 'home.html' %}
 {%block content %}
-
-<a style="color:#fff;" href="{% url 'evaluation' %}">Add new faculty rating</a>
+<style>
+  .table-container{
+    border-collapse: collapse;
+    width: 95rem;
+    margin:1.5rem;
+  }
+    table {
+        border-collapse: collapse;
+        width: 45rem;
+      }
+      
+      th,
+      td {
+        border: 1px solid white;
+        padding: 8px;
+        text-align: left;
+        color: #ffff;
+      }
+      .table-container {
+        overflow-x: auto;
+        overflow-y: auto;
+      }
+    th {
+      background-color: #4CAF50;
+    }
+    tr:nth-child(even) {
+      background-color: #4CAF50;
+    }
+    @media screen and (max-width: 12rem) {
+        table {  
+          width: 25%;
+            margin-left:4rem;
+          }
+       
+      th, td {
+        display: inline-block;
+      }
+      th {
+        text-align: center;
+        background-color: #4CAF50;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px;
+      }
+      td {
+        border-bottom: 1px solid #ddd;
+      }
+      td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+</style>
+<center><h3><a style="color:#fff;" href="{% url 'evaluation' %}">Add new faculty rating</a></h3></center>
   <hr>
+  <center><div>
+    <table>
+        <thead>
+          <tr>
+            <th>Scale</th>
+            <th>Descriptive Rating</th>
+            <th>Qualitative Description</th>
+            </tr>
+        </thead>
+        <tbody> 
+              <tr>
+                <td>5</td>
+                <td>Outstanding</td>
+                <td>Performance is exceptional</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Very Satisfactory</td>
+                <td>Performance always exceeds the requirements</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Satisfactory</td>
+                <td>Performance meets the requirements</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Fair</td>
+                <td>Performance need some enhancement to meet job requirements</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Poor</td>
+                <td>Performance failed to meet job requirements</td>
+              </tr>
+        </tbody>
+    </table>
+</div></center>
+<hr>
+<br>
+<center><h4>Faculty Evaluations</h4></center>
 <div class="table-container">
     <table>
       <thead>
         <tr>
           <th>Faculty</th>
-          <th>course title</th>
-          <th>semester</th>
-          <th>year</th>
+          <th>Course Title</th>
+          <th>Semester</th>
+          <th>Year</th>
           <th>Evaluator</th>
           <th>Course Objectives</th>
           <th>Delivering Material</th>
@@ -22,8 +117,10 @@
           <th>Promoting Critical Thinking</th>
           <th>Challenging Students</th>
           <th>Satisfaction</th>
-          <th>Actions</th>
           <th>Comments</th>
+          <th>Total Average</th>
+          <th>Actions</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -45,21 +142,30 @@
             <td>{{ evaluation.motivation }}</td>
             <td>{{ evaluation.satisfaction }}</td>
             <td>{{ evaluation.comments }}</td>
+            <td>{{ evaluation.total_average }}</td>
             <td>
-              <a href="{% url 'edit_evaluation' evaluation.pk %}">Edit</a>
-              <form method="post" action="{% url 'delete_evaluation' evaluation.pk %}">
+              <div><a style="color:white;" href="{% url 'edit_evaluation' evaluation.pk %}">Edit</a></div>
+              <form method="post" action="{% url 'delete_evaluation' evaluation.pk %}" id="delete-form">
                 {% csrf_token %}
-                <input type="submit" value="Delete">
-              </form>
+                <input type="button" value="Delete" onclick="showConfirm()">
+            </form>
             </td>
           </tr>
         {% empty %}
           <tr>
-            <td colspan="21">No survey ratings yet.</td>
+            <td colspan="11">No survey ratings yet.</td>
           </tr>
         {% endfor %}
       </tbody>
-    </table>
-    
-  </div>
+    </table>  
+</div>
+<script>
+  function showConfirm() {
+      if (confirm("Are you sure you want to delete this evaluation?")) {
+          document.getElementById("delete-form").submit();
+      } else {
+          return false;
+      }
+  }
+</script>
 {% endblock %}
