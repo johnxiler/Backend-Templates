@@ -60,3 +60,54 @@ Use the `RouterTemp` class to create a simple router for handling different HTTP
 router = RouterTemp()
 router.add_route('GET', '/', home)
 router.add_route('POST', '/users/', create_user)
+
+Mongoose Model Template for Python CRUD
+The ModelMongoose class is a template for MongoDB using Mongoose. Customize it based on your data model.
+# Example usage
+model = ModelMongoose()
+model.insert_one({"name": "John", "age": 30})
+
+Controller Template for Python CRUD
+The Controller class demonstrates basic CRUD operations. Adjust it to match your application's logic.
+# Example usage
+controller = Controller('mypassword')
+controller.create('mypassword', {"name": "John", "age": 30})
+
+CRUD Controller (MySQL)
+The CRUDController class is designed for MySQL databases and includes protections against SQL injection and XSS attacks.
+# Example usage
+crud_controller = CRUDController(model, 'localhost', 'user', 'password', 'mydatabase')
+crud_controller.create(data, csrf_token)
+
+Examples
+Django URL Patterns
+/: Home page
+/users/: List of users
+/users/<int:user_id>/: Details of a specific user
+/users/: Create a new user
+/users/<int:user_id>/update/: Update a user
+/users/<int:user_id>/delete/: Delete a user
+Router Usage
+Add routes to the RouterTemp instance and handle requests.
+router.add_route('GET', '/', home)
+result = router.handle_request('GET', '/')
+
+Mongoose Model Usage
+model.insert_one({"name": "John", "age": 30})
+user = model.find_one({"name": "John"})
+print(user)  # {"name": "John", "age": 30}
+
+Controller Usage
+controller = Controller('mypassword')
+controller.create('mypassword', {"name": "John", "age": 30})
+users = list(controller.read('mypassword', {}))
+print(users)  # [{"name": "John", "age": 30}]
+
+CRUD Controller (MySQL) Usage
+crud_controller = CRUDController(model, 'localhost', 'user', 'password', 'mydatabase')
+crud_controller.create(data, csrf_token)
+
+Feel free to modify and expand on this template to suit the specific requirements of your project.
+
+Make sure to replace placeholders like `your_username`, `your_backend_project`, `localhost`, `user`, `password`, `mydatabase`, etc., with your actual project details and configurations.
+
