@@ -33,8 +33,8 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your_username/your_backend_project.git
-    cd your_backend_project
+    git clone https://github.com/johnxiler/Backend-Templates.git
+    cd Backend-Templates
     ```
 
 2. Install dependencies:
